@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamlet - SVG Text Art</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #171414;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    svg {
+        width: 900px;
+        max-width: 100%;
+        height: auto;
+        background: #201817;
+        font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .gold {
+        fill: #d9b66f;
+    }
+
+    .ribbon {
+        fill: #781f2b;
+        stroke: #d9b66f;
+        stroke-width: 2;
+    }
+
+    .quote {
+        fill: #fff0d0;
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .small {
+        fill: #d9b66f;
+        font-size: 17px;
+        letter-spacing: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<svg viewBox="0 0 900 780"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+        <!-- Main ribbon text path -->
+        <path id="quotePath"
+        d="M 145,280
+           C 220,200 340,200 430,260
+           S 610,350 740,275"/>
+
+        <path id="lowerPath"
+        d="M 155,490
+           C 280,570 390,570 470,510
+           S 635,430 750,500"/>
+
+        <!-- Decorative curve -->
+        <path id="topCurve"
+        d="M 205,155 Q 450,80 695,155"/>
+    </defs>
+
+    <!-- Outer border -->
+    <rect x="20" y="20" width="860" height="740"
+          rx="15" fill="none"
+          stroke="#d9b66f" stroke-width="2"/>
+
+    <rect x="30" y="30" width="840" height="720"
+          rx="12" fill="none"
+          stroke="#783b35" stroke-width="1"/>
+
+    <!-- Top title -->
+    <text x="450" y="95"
+          text-anchor="middle"
+          class="small">THE PHILOSOPHY OF HAMLET</text>
+
+    <text font-size="16" class="gold">
+        <textPath href="#topCurve" startOffset="50%"
+                  text-anchor="middle">
+            THOUGHT SHAPES REALITY
+        </textPath>
+    </text>
+
+    <!-- Decorative side ornaments -->
+    <g class="gold">
+        <path d="M90 160 L105 185 L90 210 L75 185 Z"/>
+        <path d="M810 160 L825 185 L810 210 L795 185 Z"/>
+    </g>
+
+    <!-- Main flowing ribbon -->
+    <path class="ribbon"
+          d="M145 280
+             C220 200 340 200 430 260
+             S610 350 740 275
+             L765 305
+             C630 390 510 385 415 310
+             S235 250 125 310 Z"/>
+
+    <!-- Quote on ribbon -->
+    <text class="quote">
+        <textPath href="#quotePath" startOffset="1%">
+            THERE IS NOTHING EITHER GOOD OR BAD
+        </textPath>
+    </text>
+
+    <!-- Second ribbon -->
+    <path class="ribbon"
+          d="M155 490
+             C280 570 390 570 470 510
+             S635 430 750 500
+             L730 530
+             C625 465 535 485 450 545
+             S265 600 135 520 Z"/>
+
+    <!-- Second part of quote -->
+    <text class="quote" style="font-size:21px">
+        <textPath href="#lowerPath" startOffset="0%">
+            BUT THINKING MAKES IT SO
+        </textPath>
+    </text>
+
+    <!-- Center diamond -->
+    <g transform="translate(450 385)">
+        <path d="M0 -48 L38 0 L0 48 L-38 0 Z"
+              fill="#d9b66f"/>
+        <path d="M0 -30 L23 0 L0 30 L-23 0 Z"
+              fill="#201817"/>
+        <circle cx="0" cy="0" r="8" fill="#d9b66f"/>
+    </g>
+
+    <!-- Small decorative stars -->
+    <g class="gold">
+        <path d="M225 380 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5Z"/>
+        <path d="M675 390 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5Z"/>
+        <circle cx="300" cy="640" r="4"/>
+        <circle cx="600" cy="640" r="4"/>
+    </g>
+
+    <!-- Attribution -->
+    <text x="450" y="675"
+          text-anchor="middle"
+          font-size="25"
+          font-style="italic"
+          fill="#fff0d0">William Shakespeare</text>
+
+    <text x="450" y="710"
+          text-anchor="middle"
+          font-size="15"
+          letter-spacing="4"
+          class="gold">HAMLET • ACT II, SCENE II</text>
+
+    <!-- Bottom ornament -->
+    <path d="M390 730 L450 715 L510 730 L450 745 Z"
+          fill="#781f2b" stroke="#d9b66f"
+          stroke-width="1.5"/>
+
+</svg>
+
+</body>
+</html>
