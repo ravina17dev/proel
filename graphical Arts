@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 Canvas Food Drawings</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    text-align: center;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .item {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  canvas {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    background: white;
+    max-width: 100%;
+  }
+</style>
+</head>
+
+<body>
+<h1>HTML5 Canvas Food Gallery</h1>
+
+<div class="gallery">
+  <div class="item"><canvas id="icecream" width="200" height="200"></canvas><p>1. Ice Cream</p></div>
+  <div class="item"><canvas id="mug" width="200" height="200"></canvas><p>2. Mug</p></div>
+  <div class="item"><canvas id="cupcake" width="200" height="200"></canvas><p>3. Cupcake</p></div>
+  <div class="item"><canvas id="orange" width="200" height="200"></canvas><p>4. Orange</p></div>
+  <div class="item"><canvas id="potato" width="200" height="200"></canvas><p>5. Potato</p></div>
+  <div class="item"><canvas id="bagel" width="200" height="200"></canvas><p>6. Bagel</p></div>
+  <div class="item"><canvas id="sandwich" width="200" height="200"></canvas><p>7. Sandwich</p></div>
+  <div class="item"><canvas id="shake" width="200" height="200"></canvas><p>8. Shake</p></div>
+</div>
+
+<script>
+function setup(id) {
+  return document.getElementById(id).getContext("2d");
+}
+
+function circle(ctx, x, y, r, color) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+function ellipse(ctx, x, y, rx, ry, color) {
+  ctx.beginPath();
+  ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+function rounded(ctx, x, y, w, h, r, color) {
+  ctx.beginPath();
+  ctx.roundRect(x, y, w, h, r);
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+// 1. ICE CREAM
+{
+  const c = setup("icecream");
+
+  // Cone
+  c.beginPath();
+  c.moveTo(65, 100);
+  c.lineTo(100, 175);
+  c.lineTo(135, 100);
+  c.closePath();
+  c.fillStyle = "#C88745";
+  c.fill();
+
+  // Cone pattern
+  c.strokeStyle = "#A96935";
+  c.lineWidth = 2;
+  c.beginPath();
+  c.moveTo(75, 125); c.lineTo(125, 125);
+  c.moveTo(82, 142); c.lineTo(118, 142);
+  c.moveTo(91, 160); c.lineTo(109, 160);
+  c.stroke();
+
+  // Scoops
+  circle(c, 78, 88, 27, "#FFB6C9");
+  circle(c, 110, 85, 29, "#F7A4BD");
+  circle(c, 95, 61, 27, "#FFD8E5");
+
+  // Sprinkles
+  c.lineWidth = 4;
+  c.lineCap = "round";
+  c.strokeStyle = "#65C9A8";
+  c.beginPath();
+  c.moveTo(80, 55); c.lineTo(85, 62);
+  c.moveTo(108, 75); c.lineTo(114, 80);
+  c.stroke();
+
+  c.strokeStyle = "#F4C64E";
+  c.beginPath();
+  c.moveTo(69, 86); c.lineTo(75, 80);
+  c.moveTo(100, 46); c.lineTo(105, 52);
+  c.stroke();
+}
+
+// 2. MUG
+{
+  const c = setup("mug");
+
+  // Handle
+  c.beginPath();
+  c.arc(127, 100, 29, -Math.PI / 2, Math.PI / 2);
+  c.strokeStyle = "#D65A65";
+  c.lineWidth = 13;
+  c.stroke();
+
+  // Cup
+  rounded(c, 45, 58, 91, 94, 13, "#F16D78");
+
+  // Cup front
+  rounded(c, 53, 66, 75, 77, 9, "#FF9A9F");
+
+  // Coffee
+  ellipse(c, 90, 69, 37, 10, "#6B422E");
+
+  // Steam
+  c.strokeStyle = "#AAAAAA";
+  c.lineWidth = 3;
+  c.beginPath();
+  c.moveTo(75, 50);
+  c.bezierCurveTo(62, 38, 87, 30, 76, 19);
+  c.moveTo(103, 50);
+  c.bezierCurveTo(116, 39, 94, 31, 105, 20);
+  c.stroke();
+
+  // Decoration
+  circle(c, 76, 100, 5, "#FFE1DF");
+  circle(c, 102, 112, 5, "#FFE1DF");
+}
+
+// 3. CUPCAKE
+{
+  const c = setup("cupcake");
+
+  // Cupcake wrapper
+  c.beginPath();
+  c.moveTo(48, 91);
+  c.lineTo(58, 160);
+  c.lineTo(142, 160);
+  c.lineTo(152, 91);
+  c.closePath();
+  c.fillStyle = "#F4B94F";
+  c.fill();
+
+  // Wrapper stripes
+  c.strokeStyle = "#E49A37";
+  c.lineWidth = 4;
+  c.beginPath();
+  c.moveTo(73, 103); c.lineTo(77, 151);
+  c.moveTo(100, 103); c.lineTo(100, 151);
+  c.moveTo(127, 103); c.lineTo(123, 151);
+  c.stroke();
+
+  // Frosting
+  circle(c, 67, 86, 23, "#FF9EBA");
+  circle(c, 96, 68, 30, "#FF9EBA");
+  circle(c, 126, 86, 23, "#FF9EBA");
+  rounded(c, 64, 83, 72, 22, 9, "#FF9EBA");
+
+  // Cherry
+  circle(c, 100, 35, 11, "#E94F65");
+  c.strokeStyle = "#57985A";
+  c.lineWidth = 3;
+  c.beginPath();
+  c.moveTo(100, 27);
+  c.quadraticCurveTo(110, 15, 117, 22);
+  c.stroke();
+
+  // Wrapper bottom
+  rounded(c, 58, 151, 84, 12, 4, "#E89B35");
+}
+
+// 4. ORANGE
+{
+  const c = setup("orange");
+
+  // Leaves
+  c.beginPath();
+  c.ellipse(88, 42, 22, 10, -0.5, 0, Math.PI * 2);
+  c.fillStyle = "#57A85C";
+  c.fill();
+
+  c.beginPath();
+  c.ellipse(115, 36, 20, 9, 0.6, 0, Math.PI * 2);
+  c.fillStyle = "#79C86A";
+  c.fill();
+
+  // Stem
+  rounded(c, 97, 31, 7, 22, 3, "#76502F");
+
+  // Fruit
+  circle(c, 100, 108, 54, "#F79A24");
+
+  // Highlight
+  ellipse(c, 82, 87, 12, 19, "#FFC05C");
+
+  // Texture
+  circle(c, 119, 90, 3, "#E78216");
+  circle(c, 128, 112, 3, "#E78216");
+  circle(c, 94, 120, 3, "#E78216");
+  circle(c, 76, 111, 3, "#E78216");
+  circle(c, 108, 138, 3, "#E78216");
+  circle(c, 83, 137, 3, "#E78216");
+}
+
+// 5. POTATO
+{
+  const c = setup("potato");
+
+  // Potato body
+  c.save();
+  c.translate(100, 101);
+  c.rotate(-0.18);
+
+  c.beginPath();
+  c.moveTo(-57, -7);
+  c.bezierCurveTo(-68, -36, -35, -53, -9, -44);
+  c.bezierCurveTo(19, -57, 52, -36, 54, -12);
+  c.bezierCurveTo(67, 14, 37, 45, 9, 41);
+  c.bezierCurveTo(-19, 53, -52, 31, -57, -7);
+  c.closePath();
+  c.fillStyle = "#C58B52";
+  c.fill();
+
+  // Highlights
+  ellipse(c, -23, -20, 14, 7, "#D9A66D");
+
+  // Potato spots
+  circle(c, -34, -7, 3, "#8B5A36");
+  circle(c, 9, -25, 3, "#8B5A36");
+  circle(c, 34, 5, 3, "#8B5A36");
+  circle(c, -10, 23, 3, "#8B5A36");
+  circle(c, 20, 28, 2, "#8B5A36");
+  circle(c, -39, 15, 2, "#8B5A36");
+
+  c.restore();
+}
+
+// 6. BAGEL
+{
+  const c = setup("bagel");
+
+  // Bagel base
+  circle(c, 100, 101, 61, "#C18B50");
+  circle(c, 100, 101, 24, "#FFFFFF");
+
+  // Toasted outer surface
+  circle(c, 100, 101, 52, "#E7B96D");
+  circle(c, 100, 101, 24, "#FFFFFF");
+
+  // Sesame seeds
+  const seeds = [
+    [68, 76, -0.5], [93, 55, 0.3],
+    [119, 67, -0.4], [138, 88, 0.7],
+    [64, 111, 0.4], [80, 137, -0.8],
+    [111, 146, 0.4], [137, 121, -0.3],
+    [104, 83, 0.8], [73, 94, -0.2],
+    [123, 104, 0.5]
+  ];
+
+  c.strokeStyle = "#F7E4A3";
+  c.lineWidth = 4;
+  c.lineCap = "round";
+
+  seeds.forEach(([x, y, angle]) => {
+    c.beginPath();
+    c.moveTo(x - 4 * Math.cos(angle), y - 4 * Math.sin(angle));
+    c.lineTo(x + 4 * Math.cos(angle), y + 4 * Math.sin(angle));
+    c.stroke();
+  });
+}
+
+// 7. SANDWICH
+{
+  const c = setup("sandwich");
+
+  // Bottom bread
+  rounded(c, 37, 121, 126, 36, 9, "#D99A52");
+
+  // Lettuce
+  c.beginPath();
+  c.moveTo(39, 120);
+  c.lineTo(51, 109);
+  c.lineTo(65, 120);
+  c.lineTo(81, 108);
+  c.lineTo(98, 120);
+  c.lineTo(115, 108);
+  c.lineTo(132, 120);
+  c.lineTo(148, 110);
+  c.lineTo(162, 121);
+  c.lineTo(162, 131);
+  c.lineTo(39, 131);
+  c.closePath();
+  c.fillStyle = "#55AC62";
+  c.fill();
+
+  // Cheese
+  c.beginPath();
+  c.moveTo(43, 102);
+  c.lineTo(157, 102);
+  c.lineTo(146, 126);
+  c.lineTo(126, 117);
+  c.lineTo(105, 130);
+  c.lineTo(83, 116);
+  c.lineTo(60, 127);
+  c.closePath();
+  c.fillStyle = "#F4CB42";
+  c.fill();
+
+  // Tomato
+  rounded(c, 42, 94, 116, 12, 5, "#E85C4A");
+
+  // Top bread
+  rounded(c, 35, 65, 130, 35, 16, "#E9B76E");
+
+  // Bread details
+  c.strokeStyle = "#F7D99E";
+  c.lineWidth = 3;
+
+  for (let x = 55; x <= 145; x += 18) {
+    c.beginPath();
+    c.moveTo(x, 74);
+    c.lineTo(x + 3, 80);
+    c.stroke();
+  }
+}
+
+// 8. SHAKE
+{
+  const c = setup("shake");
+
+  // Straw
+  c.save();
+  c.translate(130, 54);
+  c.rotate(0.15);
+  rounded(c, -5, -28, 10, 67, 4, "#55BFA4");
+  c.restore();
+
+  // Cup body
+  c.beginPath();
+  c.moveTo(52, 68);
+  c.lineTo(66, 157);
+  c.lineTo(135, 157);
+  c.lineTo(149, 68);
+  c.closePath();
+  c.fillStyle = "#F5B8C7";
+  c.fill();
+
+  // Chocolate topping
+  ellipse(c, 100, 70, 49, 12, "#754A38");
+
+  // Cup rim
+  rounded(c, 45, 61, 110, 16, 6, "#E9A0B4");
+
+  // Whipped cream
+  circle(c, 76, 48, 17, "#FFF0E7");
+  circle(c, 96, 39, 19, "#FFF0E7");
+  circle(c, 115, 47, 17, "#FFF0E7");
+
+  // Cup decorations
+  circle(c, 84, 98, 5, "#FFFFFF");
+  circle(c, 113, 112, 5, "#FFFFFF");
+  circle(c, 93, 133, 5, "#FFFFFF");
+
+  // Bottom rim
+  rounded(c, 65, 151, 71, 10, 4, "#E99BB0");
+}
+</script>
+</body>
+</html>
